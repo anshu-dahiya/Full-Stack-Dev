@@ -1,0 +1,30 @@
+
+body{
+    background-color: rgb(114, 160, 29);
+}
+.box{
+    height: 100px;
+    width: 100px;
+    border: 1px solid black;
+    margin: 5px;
+    text-align: center;
+    background-color: lightblue;
+}
+
+.content{
+    color: red;
+}
+
+.newClass{
+    background-color: green;
+}
+
+.dark{
+    background-color: black;
+    color: white;
+}
+
+.light{
+    background-color: white;
+    color: black;
+}

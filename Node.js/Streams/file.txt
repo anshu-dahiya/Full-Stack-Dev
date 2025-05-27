@@ -1,0 +1,59 @@
+# Let's generate a .txt file with the sample user data including paragraphs (bios)
+
+sample_data = """
+ID: u001
+Name: Aarav Malhotra
+Email: aarav.malhotra@example.com
+Status: active
+Role: admin
+Bio: Aarav is a full-stack developer with over 8 years of experience in building scalable web applications. He loves working with JavaScript frameworks and mentoring young developers. In his free time, he contributes to open-source projects and writes tech blogs.
+
+ID: u002
+Name: Priya Sharma
+Email: priya.sharma@example.com
+Status: inactive
+Role: editor
+Bio: Priya is a passionate content writer who specializes in health and wellness topics. With a background in journalism, she believes in the power of storytelling to connect and inspire. She has worked with multiple health startups to shape their content strategy.
+
+ID: u003
+Name: Vikram Raj
+Email: vikram.raj@example.com
+Status: active
+Role: user
+Bio: Vikram is a digital marketer who enjoys exploring the dynamics of SEO, social media campaigns, and email marketing. His recent projects involved scaling traffic for startups by over 200%. Outside work, he is an avid trekker and a part-time photographer.
+
+ID: u004
+Name: Ishita Verma
+Email: ishita.verma@example.com
+Status: pending
+Role: moderator
+Bio: Ishita brings a unique combination of data analytics and creative thinking. She has been instrumental in helping companies understand user behavior using tools like Power BI and Python. She also organizes workshops for college students.
+
+ID: u005
+Name: Devansh Khanna
+Email: devansh.khanna@example.com
+Status: active
+Role: contributor
+Bio: Devansh is a freelance graphic designer with a flair for minimalist aesthetics. Over the past 3 years, he has designed branding kits, UI/UX flows, and social media creatives for more than 20 clients across industries. He is also learning 3D design tools.
+
+ID: u006
+Name: Megha Tiwari
+Email: megha.tiwari@example.com
+Status: inactive
+Role: user
+Bio: Megha is currently pursuing her Master’s in Environmental Science and is deeply involved in research on climate change impacts. She volunteers for tree plantation drives and leads awareness programs in local communities.
+
+ID: u007
+Name: Yash Patel
+Email: yash.patel@example.com
+Status: active
+Role: user
+Bio: Yash is a backend engineer working extensively with Node.js and MongoDB. He enjoys solving complex problems and optimizing server-side performance. He recently built a scalable notification system for a fintech platform.
+"""
+
+# Save to a .txt file
+file_path = "/mnt/data/sample_user_data.txt"
+with open(file_path, "w") as f:
+    f.write(sample_data)
+
+file_path

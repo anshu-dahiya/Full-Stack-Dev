@@ -1,0 +1,60 @@
+//BookConroller stores all methods performed 
+let books = [
+    { id:1, title:'Book 1', author:'Auhtor 1'},
+    { id:2, title:'Book 2', author:'Auhtor 2'}
+]    
+
+//Get Method
+const getBooks = (req,res) => {
+    res.json(books)
+}
+
+//Post Method 
+const createBook = (req,res) => {
+    console.log(req.body);
+    const newBook = req.body;
+    newBook.id = books.length + 1;
+    books.push(newBook);
+
+    res.status(201).json(books);
+}
+
+
+//Put Method
+const updatedBook = (req,res) => {
+    const id = parseInt(req.params.id);
+    const updatedBook = req.body;
+    const index = books.findIndex(book => book.id === id);
+
+    if(index !== -1){
+        books[index] = {...books[index], ...updatedBook};
+        res.json(books[index]);
+    }
+    else{
+        res.status(404).json({error:"Book Not Found"});
+    }
+}
+
+
+//Delete Method
+const deletedBook = (req,res) => {
+    const id = parseInt(req.params.id);
+    const index = books.findIndex(book => book.id === id);
+
+    if(index !== -1){
+        const deletedBook = books[index];
+        books.splice(index,1);   //removes exactly 1 element from books at position specified by index.
+        res.json(deletedBook);
+    }
+    else{
+        res.status(404).json({error:"Book Not Found"});
+    }
+}
+
+
+module.exports = {
+    getBooks,
+    createBook,
+    updatedBook,
+    deletedBook
+}

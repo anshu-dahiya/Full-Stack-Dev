@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "express": "^4.21.2",
+    "figlet": "^1.7.0",
+    "tutorial": "file:"
+  },
+  "name": "tutorial",
+  "version": "1.0.0",
+  "description": "lets learn a node",
+  "main": "practice.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "type": "module",
+  "license": "ISC"
+}
