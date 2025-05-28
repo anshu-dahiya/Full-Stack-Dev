@@ -6,6 +6,7 @@ async function main() {
         const collection = db.collection('users');
         
         const findResult = await collection.find().toArray()
+        console.log(`Total Documents are: ${findResult.length}`);
         console.log(findResult);
     }
     catch(error){
