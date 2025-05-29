@@ -1,16 +1,43 @@
-const {MongoClient} = require('mongodb');
-const url = 'mongodb://localhost:27017';
-const client = new MongoClient(url);
-const dbName = 'myDB';
+const express = require('express')
+const app =  express(); 
+const {dbConnection} = require('./db');
 
-async function main(){
-    await client.connect();
-    console.log("Connected Successfully to DB");
-    const db = client.db(dbName);
-    const collection = db.collection('users');
 
-    const findResult = await collection.find().toArray();
-    console.log(findResult);
-}
+//Get
+app.get('/users', async(req,res) => {
+    try{
+        const db = await dbConnection();
+        const collection =  db.collection('users');
+        const users = await collection.find().toArray();
+        res.json(users);
 
-main();
+    }
+    catch(error){
+        console.error(error);
+        res.status(500).json({error: 'Internal server error'});
+    }
+})
+
+
+//POST
+
+app.use(express.json())   //Middleware to parse incoming JSON request bodies
+
+app.post('/users', async(req,res) => {
+    try{
+        const db = await dbConnection();
+        const collection =  db.collection('users');
+        const result = await collection.insertOne(req.body);
+        res.json(result);
+
+    }
+    catch(error){
+        console.error(error);
+        res.status(500).json({error: 'Internal server error'});
+    }
+})
+
+
+
+
+app.listen(3000);
