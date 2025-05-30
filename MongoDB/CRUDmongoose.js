@@ -47,6 +47,40 @@ app.post('/books', async(req,res) => {
 })
 
 
+
+//PUT
+app.put('/books/:id', async(req,res) => {
+    console.log(req.params)
+    try{
+        const {id} = req.params;
+        const {title,author} = req.body;
+        const updatedBook = await BooksModal.findByIdAndUpdate(id,{title,author});
+        res.json(updatedBook);
+    }
+    catch(err){
+        console.error(err);
+        res.status(500).json({error: "Internal Server Error"});
+    }
+})
+
+
+
+//DELETE
+app.delete('/books/:id', async(req,res) => {
+    console.log(req.params)
+    try{
+        const {id} = req.params;
+        const deletedBook = await BooksModal.findByIdAndDelete(id)
+        res.sendStatus(204);
+    }
+    catch(err){
+        console.error(err);
+        res.status(500).json({error: "Internal Server Error"});
+    }
+})
+
+
+
 app.listen(3000, () => {
     console.log("Server running on port 3000")
 })
