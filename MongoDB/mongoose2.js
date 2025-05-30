@@ -7,20 +7,38 @@ const app = express();
 mongoose.connect('mongodb://localhost:27017/myDB')
 console.log("Connected to MongoDB");
 
-const bookSchema = new mongoose.Schema({
+const BookSchema = new mongoose.Schema({
     title:String,
     author:String
 })
 
-const booksModal = new mongoose.model('book',bookSchema);
+const BooksModal = new mongoose.model('book',BookSchema);
 
 
 
 //GET
 app.get('/books', async(req,res) => {
     try{
-        const books =  await booksModal.find();
+        const books =  await BooksModal.find();
         res.json(books);
+    }
+    catch(err){
+        console.error(err);
+        res.status(500).json({error: "Internal Server Error"});
+    }
+})
+
+
+//POST
+app.use(express.json())     //Middleware to parse incoming JSON request bodies
+
+app.post('/books', async(req,res) => {
+    console.log(req.body)
+    try{
+        const {title,author} = req.body;
+        const newBook =  new BooksModal({title,author});
+        await newBook.save();
+        res.status(201).json(newBook);
     }
     catch(err){
         console.error(err);
